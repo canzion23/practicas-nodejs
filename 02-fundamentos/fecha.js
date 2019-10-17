@@ -10,9 +10,7 @@
 //     return `Hola ${ nombre }`;
 // }
 
-let saludar = (nombre) => {
-    return `Hola ${nombre}`;
-}
+let saludar = nombre => `Hola ${nombre}`
 
 // console.log(sumar(10,20));
 console.log(saludar('Luis'));
