@@ -11,9 +11,6 @@ const guardarDB = () => {
         if (err) {
             //reject(err);
             throw new Error('No se pudo grabar la tarea', err);
-        } else {
-            //resolve(`La tarea fue agregada al archivo`);
-            console.log("TCL: guardarDB -> La tarea fue agregada al archivo");
         }
     });
 };
@@ -29,7 +26,7 @@ const cargarDB = () => {
     }
 };
 
-const crear = descripcion => {
+const crear = (descripcion) => {
 
     let porHacer = {
         descripcion,
@@ -45,6 +42,31 @@ const crear = descripcion => {
     return porHacer;
 };
 
+const getListado = () => {
+
+    cargarDB();
+    return listadoPorHacer;
+
+};
+
+const actualizar = (descripcion, completado = true) => {
+
+    cargarDB();
+
+    let index = listadoPorHacer.findIndex(tarea => tarea.descripcion === descripcion);
+
+    if (index >= 0) {
+        listadoPorHacer[index].completado = completado;
+        guardarDB();
+        return true;
+    } else {
+        return false;
+    }
+
+};
+
 module.exports = {
-    crear
+    crear,
+    getListado,
+    actualizar
 };
