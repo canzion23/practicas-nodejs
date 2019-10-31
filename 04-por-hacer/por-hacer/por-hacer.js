@@ -53,10 +53,12 @@ const actualizar = (descripcion, completado = true) => {
 
     cargarDB();
 
+    isTrueSet = (completado === 'true');
+
     let index = listadoPorHacer.findIndex(tarea => tarea.descripcion === descripcion);
 
     if (index >= 0) {
-        listadoPorHacer[index].completado = completado;
+        listadoPorHacer[index].completado = isTrueSet;
         guardarDB();
         return true;
     } else {
@@ -65,8 +67,44 @@ const actualizar = (descripcion, completado = true) => {
 
 };
 
+const borrar = (descripcion) => {
+
+    cargarDB();
+
+    let index = listadoPorHacer.findIndex(tarea => tarea.descripcion === descripcion);
+    console.log("TCL: borrar -> index", index);
+
+    if (index >= 0) {
+        let x, y;
+
+        x = listadoPorHacer.length;
+
+        listadoPorHacer.splice(index, 1);
+
+        y = listadoPorHacer.length;
+        guardarDB();
+        return true;
+    } else {
+        return false;
+    }
+
+    // let nuevoListado = listadoPorHacer.filter(tarea => {
+    //     return tarea.descripcion !== descripcion;
+    // });
+
+    // if (listadoPorHacer.length === nuevoListado.length) {
+    //     return false;
+    // } else {
+    //     listadoPorHacer = nuevoListado;
+    //     guardarDB();
+    //     return true;
+    // }
+
+};
+
 module.exports = {
     crear,
     getListado,
-    actualizar
+    actualizar,
+    borrar
 };

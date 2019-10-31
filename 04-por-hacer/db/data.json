@@ -1,1 +1,22 @@
-[{"descripcion":"Pasear al Perro","completado":"true"},{"descripcion":"Dar de comer al Perro","completado":false},{"descripcion":"Bañar al Perro","completado":"false"}]
+[
+    {
+        "descripcion": "Cortar el cesped",
+        "completado": false
+    },
+    {
+        "descripcion": "Dar de comer al perro",
+        "completado": false
+    },
+    {
+        "descripcion": "Pasear al perro",
+        "completado": true
+    },
+    {
+        "descripcion": "Limpiar la cocina",
+        "completado": false
+    },
+    {
+        "descripcion": "Ordenar la librera",
+        "completado": true
+    }
+]
